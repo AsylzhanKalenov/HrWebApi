@@ -1,0 +1,22 @@
+﻿@model HrWebApi.ViewModels.FileViewModel
+
+<h2>Регистрация</h2>
+<h3>@ViewBag.Status</h3>
+<form asp-action="PostUserDoc" asp-controller="UserDocs" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Specialization">Введите Email</label><br />
+            <input type="file" asp-for="Specialization" />
+            <span asp-validation-for="Specialization"></span>
+        </div>
+        <div>
+            <label asp-for="Udv">Введите Имя</label><br />
+            <input type="file" asp-for="Udv" />
+            <span asp-validation-for="Udv"></span>
+        </div>
+        <div>
+            <input type="submit" value="Send" />
+        </div>
+    </div>
+</form>
