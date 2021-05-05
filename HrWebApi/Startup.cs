@@ -38,6 +38,10 @@ namespace HrWebApi
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials());
+                options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod());
             });
 
             services.Configure<CookiePolicyOptions>(options =>

@@ -15,6 +15,7 @@ namespace HrWebApi.Models
         public DbSet<UserDoc> UserDoc { get; set; }
         public DbSet<Children> Children { get; set; }
         public DbSet<CheckDoc> CheckDoc { get; set; }
+        public DbSet<CheckCat> CheckCat { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<FileCat> FileCat { get; set; }
         public DbSet<UserPriv> UserPriv { get; set; }
