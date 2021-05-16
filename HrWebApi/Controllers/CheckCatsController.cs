@@ -40,6 +40,19 @@ namespace HrWebApi.Controllers
 
             return checkCat;
         }
+        [Route("GetCheckCatByUser")]
+        [HttpGet]
+        public async Task<ActionResult<CheckCat>> GetCheckCatByUser(int userid, int catid)
+        {
+            var checkCat = await _context.CheckCat.FirstOrDefaultAsync(x=> x.UserId == userid && x.FileCatId==catid);
+
+            if (checkCat == null)
+            {
+                return NotFound();
+            }
+
+            return checkCat;
+        }
 
         // PUT: api/CheckCats/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
