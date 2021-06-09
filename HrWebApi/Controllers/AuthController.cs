@@ -148,7 +148,37 @@ namespace HrWebApi.Controllers
 
             return NoContent();
         }
-        private bool UserExists(int id)
+        [Route("SetStatus/{id}")]
+        [HttpPut]
+        public async Task<ActionResult<string>> SetStatus(int id, User u)
+        {
+            User user = await db.User.FindAsync(id);
+            if (user == null)
+                return NotFound();
+
+            user.Status = u.Status;
+
+            db.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+
+        }
+            private bool UserExists(int id)
         {
             return db.Company.Any(e => e.Id == id);
         }
